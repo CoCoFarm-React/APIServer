@@ -9,6 +9,6 @@ public class MemberEntity {
 
     
     @Id
-    private String 
+    private String email;
 
 }
