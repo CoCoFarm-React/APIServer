@@ -1,13 +1,13 @@
 package com.sample.jpa.member.entity;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
+
+import lombok.*;
+
 
 @Entity
 @Table(name = "member")
@@ -16,6 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString
+@EqualsAndHashCode(of = {"email"})
 public class Member extends BaseEntity {
     
     @Id

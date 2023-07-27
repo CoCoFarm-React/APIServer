@@ -23,7 +23,7 @@ public abstract class BaseEntity {
     // LocalDate는 날짜까지 time붙으면 시분초
     
     @CreatedDate
-    @Column(updatable = false)
+    @Column
     private LocalDateTime regDate;
 
     @LastModifiedDate

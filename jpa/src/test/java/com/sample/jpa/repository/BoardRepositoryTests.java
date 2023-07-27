@@ -21,20 +21,33 @@ public class BoardRepositoryTests {
     private BoardRepository boardRepository;
 
     @Autowired(required = false)
-    private MemberRepository repository;
-    Optional<Member> member = repository.findById("aaa@email.com");
-
-    // Member insertMember = member.orElseThrow();
+    private MemberRepository repository ;
       
     @Test
     public void putBoardList(){
      
-        for(int i = 0; i < 30 ; i++){
-                
+        //Optional<Member> result = repository.findById("aaa0@email.com");
+        //log.info("member----------------------------------------" );
+
+        //Member member  = result.orElseThrow();
+
+        //log.info("MEMBER:  " + member);
+        
+        //Member member = Member.builder().email("aaa0@email.com").build();
+
+        for(int i = 0; i < 5 ; i++){
+            
+                 
+            Optional<Member> result = repository.findById("aaa"+ i +"@email.com");
+            log.info("member----------------------------------------" );
+
+            Member member = result.orElseThrow();
+
+            
             Board board = Board.builder()
             .content("contents" + i)
             .title("title" +  i)
-            .member(member.)
+            .member(member)
             .build();
             
             boardRepository.save(board);
