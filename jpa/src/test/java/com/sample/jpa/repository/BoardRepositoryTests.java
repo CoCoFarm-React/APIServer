@@ -20,12 +20,8 @@ public class BoardRepositoryTests {
     @Autowired(required = false)
     private BoardRepository boardRepository;
 
-    @Autowired(required = false)
-    private MemberRepository repository;
-    Optional<Member> member = repository.findById("aaa@email.com");
 
-    // Member insertMember = member.orElseThrow();
-      
+    Member member = Member.builder().email("aaa0@email.com").build();      
     @Test
     public void putBoardList(){
      
@@ -34,7 +30,7 @@ public class BoardRepositoryTests {
             Board board = Board.builder()
             .content("contents" + i)
             .title("title" +  i)
-            .member(member.)
+            .member(member)
             .build();
             
             boardRepository.save(board);
