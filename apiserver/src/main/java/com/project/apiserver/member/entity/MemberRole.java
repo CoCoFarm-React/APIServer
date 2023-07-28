@@ -1,7 +1,7 @@
 package com.project.apiserver.member.entity;
 
 public enum MemberRole {
-    ADMIN("USER_ADMIN"), CULTIVATOR("USER_CULTIVATOR"), CONSUMER("USER_CONSUMER");
+    ADMIN("USER_ADMIN"), FARMER("USER_FARMER"), CONSUMER("USER_CONSUMER");
 
     private final String value;
 

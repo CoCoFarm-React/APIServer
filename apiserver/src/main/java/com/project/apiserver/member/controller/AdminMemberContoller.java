@@ -8,25 +8,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.apiserver.member.dto.MemberDTO;
+import com.project.apiserver.member.entity.MemberRole;
 import com.project.apiserver.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 @RestController
-@RequestMapping("/member/")
+@RequestMapping("/api/admin/")
 @RequiredArgsConstructor
 @CrossOrigin
-public class MemberContoller {
+public class AdminMemberContoller {
 
 
     private final MemberService memberService;
 
 
-    @GetMapping("list")
-    public List<MemberDTO> getList(){
+    @GetMapping("farmer")
+    public List<MemberDTO> getFarmerList(){
 
+        MemberRole role= MemberRole.FARMER;
 
-        return memberService.getList();
+        return memberService.getList(role);
+    }
 
+    @GetMapping("consumer")
+    public List<MemberDTO> getConsumerList(){
+
+         MemberRole role= MemberRole.CONSUMER;
+
+         return memberService.getList(role);
     }
     
 }

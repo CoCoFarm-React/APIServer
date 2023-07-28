@@ -33,7 +33,7 @@ public class MemberRepositoryTests {
         switch(i%2){
 
             case 0:
-            member.addRole(MemberRole.CULTIVATOR);
+            member.addRole(MemberRole.FARMER);
             break;
             case 1:
             member.addRole(MemberRole.CONSUMER);
