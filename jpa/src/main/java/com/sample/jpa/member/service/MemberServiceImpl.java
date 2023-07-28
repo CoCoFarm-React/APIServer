@@ -15,11 +15,6 @@ public class MemberServiceImpl  implements MemberService{
 
     private final MemberRepository repository;
 
-    @Override
-    public List<Member> list(int rolecode) {
 
-
-        return repository.findByRolecode(rolecode);
-    } 
     
 }

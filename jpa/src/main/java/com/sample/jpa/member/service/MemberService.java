@@ -9,5 +9,4 @@ import jakarta.transaction.Transactional;
 @Transactional
 public interface MemberService {
     
-    List<Member> list(int rolecode);
 }

@@ -18,42 +18,42 @@ public class MemberRepositoryTests {
     @Autowired(required = false)
     private MemberRepository repository;
 
-    @Test
-    public void insertTest(){
+    // @Test
+    // public void insertTest(){
 
-        log.info("Start insert");
+    //     log.info("Start insert");
 
-        for(int i=0; i< 20; i++){
+    //     for(int i=0; i< 20; i++){
             
-            Member member = Member.builder()
-            .email("aaa"+ i + "@email.com" )
-            .pw("111")
-            .nick("nick" +i)
-            .rolecode(i%3)
-            .build();
+    //         Member member = Member.builder()
+    //         .email("aaa"+ i + "@email.com" )
+    //         .pw("111")
+    //         .nick("nick" +i)
+    //         .rolecode(i%3)
+    //         .build();
 
-            repository.save(member);
-        }
-        log.info("finish insert");
-    }
+    //         repository.save(member);
+    //     }
+    //     log.info("finish insert");
+    // }
 
-    @Test
-    public void readListTestByRoleCode(){
+    // @Test
+    // public void readListTestByRoleCode(){
         
-        int cultivator = 1;
-        int consumer = 2;
-        //List<Member> list = repository.findAll();
+    //     int cultivator = 1;
+    //     int consumer = 2;
+    //     //List<Member> list = repository.findAll();
 
-        //log.info(list);
-        List<Member> culList = repository.findByRolecode(cultivator);
-        log.info(culList);
+    //     //log.info(list);
+    //     List<Member> culList = repository.findByRolecode(cultivator);
+    //     log.info(culList);
 
-        log.info("-----------------------------------------------------------");
+    //     log.info("-----------------------------------------------------------");
         
-        List<Member> conList = repository.findByRolecode(consumer);
-        log.info(conList);
-        log.info("-------------------------------------------------------------");
-        log.info("END");
-    }
+    //     List<Member> conList = repository.findByRolecode(consumer);
+    //     log.info(conList);
+    //     log.info("-------------------------------------------------------------");
+    //     log.info("END");
+    // }
     
 }

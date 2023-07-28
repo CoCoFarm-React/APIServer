@@ -19,13 +19,5 @@ public class AdminController {
 
     private final MemberService service;
 
-    @GetMapping("/list")
-    public void showList(Model model){
 
-        log.info("get.......");
-        model.addAttribute("culList", service.list(1));
-
-        model.addAttribute("conList", service.list(2));
-    }
-    
 }
