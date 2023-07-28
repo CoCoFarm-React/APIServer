@@ -1,0 +1,17 @@
+package com.project.apiserver.member.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.project.apiserver.member.entity.Member;
+
+
+
+public interface MemberRepository extends JpaRepository<Member, String>{
+
+    
+    @EntityGraph(attributePaths = "role")
+    List<Member> findAll();
+}
