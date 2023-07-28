@@ -20,6 +20,6 @@ public class MemberDTO {
     private String pw;
     private String nickname;
     private String role;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime regDate;
 }
