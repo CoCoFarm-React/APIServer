@@ -17,12 +17,12 @@ public class MemberServiceTests {
     @Autowired(required = false)
     MemberService service;
 
-    // @Test
-    // @Transactional
-    // public void getList(){
-    //     String value = "CULTIVATOR";
+    @Test
+    @Transactional
+    public void getList(){
+        String value = "FARMER";
 
-    //     MemberRole role = MemberRole.valueOf(value);
-    //    log.info(service.getList(role)); 
-    // }
+        MemberRole role = MemberRole.valueOf(value);
+       log.info(service.getList(role)); 
+    }
 }
