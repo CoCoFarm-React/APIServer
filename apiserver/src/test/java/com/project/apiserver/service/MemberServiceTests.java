@@ -22,7 +22,8 @@ public class MemberServiceTests {
     public void getList(){
         String value = "FARMER";
 
-    //     MemberRole role = MemberRole.valueOf(value);
-    //    log.info(service.getList(role)); 
-    // }
+        MemberRole role = MemberRole.valueOf(value);
+       log.info(service.getList(role)); 
+    }
 }
+
