@@ -21,20 +21,22 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
     }
 
     @Override
-    public PageResponseDTO<BoardListDTO> search(String type, String keyword, PageRequestDTO requestDTO) {
+    public PageResponseDTO<BoardListDTO> search(PageRequestDTO requestDTO) {
 
         Pageable pageable = makePageable(requestDTO);
         QBoard qBoard = QBoard.board;
         QMember qMember = QMember.member;
         QCategory qCategory = QCategory.category;
+        String keyword = requestDTO.getKeyword();
+        String searchType = requestDTO.getType();
 
         JPQLQuery<Board> searchQuery = from(qBoard);
         searchQuery.leftJoin(qMember).on(qMember.eq(qBoard.member));
         searchQuery.leftJoin(qCategory).on(qCategory.eq(qBoard.category));
 
-        if (keyword != null && type != null) {
+        if (keyword != null && searchType != null) {
             // tc => [t,c]
-            String[] searchArr = type.split("");
+            String[] searchArr = searchType.split("");
             // BooleanBuilder 생성
             BooleanBuilder searchBuilder = new BooleanBuilder();
 
@@ -57,6 +59,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
                 BoardListDTO.class,
                 qBoard.bno,
                 qBoard.title,
+                qMember.email,
                 qMember.nickname,
                 qCategory.catename,
                 qBoard.regDate));

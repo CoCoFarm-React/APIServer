@@ -21,8 +21,6 @@ public class BoardListDTO {
     private String title;
     
     private String email;
-    
-
     private String nickname;
     private String catename;
 

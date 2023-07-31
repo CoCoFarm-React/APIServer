@@ -77,7 +77,7 @@ public class BoardRepositoryTests {
     public void searchTest(){
 
         PageRequestDTO pageRequestDTO = new PageRequestDTO();
-        PageResponseDTO<BoardListDTO> responseDTO = boardRepository.search("tcw", "1", pageRequestDTO);
+        PageResponseDTO<BoardListDTO> responseDTO = boardRepository.search(pageRequestDTO);
 
         log.info(responseDTO);
 

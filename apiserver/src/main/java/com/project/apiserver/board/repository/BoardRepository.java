@@ -13,7 +13,7 @@ import com.project.apiserver.board.repository.search.BoardSearch;
 public interface BoardRepository extends JpaRepository<Board, Long>, BoardSearch {
 
     @Query("SELECT b.bno, b.title, b.regDate, m.nickname, c.catename \r\n" + //
-            "FROM Board b LEFT JOIN b.member m LEFT JOIN b.category c \r\n" + //
+            "FROM Board b LEFT JOIN Member m on m = b.member LEFT JOIN Category c on c = b.category \r\n" + //
             "WHERE b.bno = :bno \r\n" )
     Object[] getBoard(@Param("bno") Long bno);
     
