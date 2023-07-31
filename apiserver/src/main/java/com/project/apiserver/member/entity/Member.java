@@ -33,7 +33,6 @@ public class Member extends BaseEntity {
     private String pw;
     private String nickname;
 
-
     @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated(EnumType.STRING)
     @Builder.Default

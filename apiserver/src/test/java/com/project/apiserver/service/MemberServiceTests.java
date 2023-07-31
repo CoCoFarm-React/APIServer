@@ -25,4 +25,8 @@ public class MemberServiceTests {
     //     MemberRole role = MemberRole.valueOf(value);
     //    log.info(service.getList(role)); 
     // }
+
+
+    
+
 }
