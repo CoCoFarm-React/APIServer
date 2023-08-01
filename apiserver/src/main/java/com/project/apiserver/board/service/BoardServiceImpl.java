@@ -35,7 +35,11 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public BoardReadDTO getOne(Long bno) {
 
-        return boardRepository.getBoardInfo(bno);
+       
+
+       //BoardListDTO board = boardRepository.getBoard(bno);
+
+        return null;
         
     }
 
