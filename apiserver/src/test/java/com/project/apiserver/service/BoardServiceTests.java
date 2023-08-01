@@ -19,7 +19,7 @@ public class BoardServiceTests {
     public void getList(){
 
 
-        log.info(boardService.getBoardList());
+        // log.info(boardService.());
 
     }
     

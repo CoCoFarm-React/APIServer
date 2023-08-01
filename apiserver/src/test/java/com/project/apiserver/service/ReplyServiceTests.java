@@ -22,18 +22,35 @@ public class ReplyServiceTests {
     public void insertTest(){
 
         ReplyDTO dto = ReplyDTO.builder().bno(100L).ord(false).reply("대댓글").build();
-
-        replyService.replyRegister(dto);
+        replyService.registReply(dto);
 
     }
 
-    @Test void readListTest(){
+    @Test 
+    public void readListTest(){
 
         ReplyPageRequestDTO requestDTO = ReplyPageRequestDTO.builder().bno(100L).last(true).build();
+        replyService.getReplyList(requestDTO);
+        log.info(replyService.getReplyList(requestDTO));
 
-        replyService.replyList(requestDTO);
+    }
 
-        log.info(replyService.replyList(requestDTO));
+    @Test
+    public void deleteReplyTest(){
+
+        replyService.deleteReply(8L);
+
+    }
+
+    @Test
+    public void modifyReplyTest(){
+
+        ReplyDTO replyDTO = ReplyDTO.builder()
+        .rno(9L)
+        .reply("수정하였습니다.")
+        .build();
+
+        replyService.modifyReply(replyDTO);
 
     }
 

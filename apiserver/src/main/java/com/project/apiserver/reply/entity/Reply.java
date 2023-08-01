@@ -36,5 +36,14 @@ public class Reply extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Board board;
 
+    private boolean delFlag;
+
+    public void changeDelFlag(boolean delFlag) {
+        this.delFlag = delFlag;
+    }
+
+    public void changeReply(String reply) {
+        this.reply = reply;
+    }
 
 }

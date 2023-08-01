@@ -27,37 +27,43 @@ public class BoardRepositoryTests {
     @Autowired
     private BoardRepository boardRepository;
 
-    // @Test
-    // public void addBoard() {
+    @Test
+    public void addBoard() {
 
-    //     Category category = Category.builder().cateno(1).catename("관리자문의").build();
-    //     Member member = Member.builder().email("aaa0@email.com").build();
-    //     log.info("Start insert");
+        Category category = Category
+        .builder()
+        .cateno(1)
+        .catename("관리자문의")
+        .build();
 
-    //     for (int i = 0; i < 100; i++) {
+        Member member = Member.builder().email("aaa0@email.com").build();
+        
+        log.info("Start insert");
 
-    //         Board board = Board.builder()
-    //                 .category(category)
-    //                 .member(member)
-    //                 .title("게시판 제목" + i)
-    //                 .content("내용드릉ㄴ믕ㄴㅁ" + i)
-    //                 .build();
+        for (int i = 0; i < 100; i++) {
 
-    //         boardRepository.save(board);
+            Board board = Board.builder()
+                    .category(category)
+                    .member(member)
+                    .title("게시판 제목" + i)
+                    .content("내용드릉ㄴ믕ㄴㅁ" + i)
+                    .build();
 
-    //     }
+            boardRepository.save(board);
 
-    //     log.info("------------------------------");
-    //     log.info("End Insert");
+        }
 
-    // }
+        log.info("------------------------------");
+        log.info("End Insert");
+
+    }
 
     @Test
     @Transactional // lazy loading이라서 걸어줘야 함
     public void readest() {
 
 
-        Object[] result = boardRepository.getBoard(5L);
+       BoardListDTO result = boardRepository.getBoard(5L);
         log.info(result);
 
     }
@@ -76,7 +82,8 @@ public class BoardRepositoryTests {
     @Test
     public void searchTest(){
 
-        PageRequestDTO pageRequestDTO = new PageRequestDTO();
+        PageRequestDTO pageRequestDTO = new PageRequestDTO(1, 10, "c", "1", 1);
+
         PageResponseDTO<BoardListDTO> responseDTO = boardRepository.search(pageRequestDTO);
 
         log.info(responseDTO);

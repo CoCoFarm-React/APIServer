@@ -21,8 +21,11 @@ public class ReplyDTO {
     private String reply;
     @Builder.Default
     private boolean ord = false;
+    private boolean delFlag;
+    
     
     private String email;
+    private String nickname;
     private Long bno;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

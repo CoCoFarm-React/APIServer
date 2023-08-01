@@ -3,6 +3,7 @@ package com.project.apiserver.repository;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,9 @@ public class ReplyRepositoryTests {
     
     @Autowired
     private ReplyRepository replyRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
     
 
     @Test
@@ -53,11 +57,38 @@ public class ReplyRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 20, Sort.by("rno").ascending());
 
-
         Page<ReplyDTO> result =  replyRepository.getReplyList(100L, pageable);
 
         
     }
 
+    // 삭제
+    @Test
+    public void deleteReplyTest(){
+        
+        ReplyDTO dto = ReplyDTO.builder().rno(3L).reply("삭제되었습니다.").delFlag(true).build();
+
+        Reply reply = modelMapper.map(dto, Reply.class);
+
+        replyRepository.save(reply);
+
+    }
+
+    // 수정
+    @Test
+    public void modifyReplyTest(){
+        
+        ReplyDTO dto = ReplyDTO.builder()
+        .rno(8L)
+        .reply("수정하였습니다.")
+        .build();
+
+        Reply reply = modelMapper.map(dto, Reply.class);
+
+        replyRepository.save(reply);
+
+    }
+
+    
 
 }

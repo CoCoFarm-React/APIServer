@@ -10,6 +10,7 @@ import com.project.apiserver.common.PageRequestDTO;
 import com.project.apiserver.common.PageResponseDTO;
 import com.project.apiserver.common.QCategory;
 import com.project.apiserver.member.entity.QMember;
+import com.project.apiserver.reply.entity.QReply;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
@@ -27,18 +28,26 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         QBoard qBoard = QBoard.board;
         QMember qMember = QMember.member;
         QCategory qCategory = QCategory.category;
+        QReply qReply = QReply.reply1;
         String keyword = requestDTO.getKeyword();
         String searchType = requestDTO.getType();
-
+        Integer category = requestDTO.getCategory();
+    
         JPQLQuery<Board> searchQuery = from(qBoard);
         searchQuery.leftJoin(qMember).on(qMember.eq(qBoard.member));
         searchQuery.leftJoin(qCategory).on(qCategory.eq(qBoard.category));
+        searchQuery.leftJoin(qReply).on(qReply.board.eq(qBoard));
 
         if (keyword != null && searchType != null) {
             // tc => [t,c]
             String[] searchArr = searchType.split("");
             // BooleanBuilder 생성
-            BooleanBuilder searchBuilder = new BooleanBuilder();
+            BooleanBuilder searchBuilder = new BooleanBuilder();         
+
+            if (category != null && category > 0 ) {
+                searchBuilder.or(qBoard.category.cateno.eq(5));
+                if(category != 5)searchBuilder.or(qBoard.category.cateno.eq(category));
+            }
 
             for (String typeword : searchArr) {
 
@@ -62,7 +71,9 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
                 qMember.email,
                 qMember.nickname,
                 qCategory.catename,
-                qBoard.regDate));
+                qBoard.regDate,
+                qReply.countDistinct().as("rCnt")
+                ));
         long totalCount = listQuery.fetchCount();
         List<BoardListDTO> list = listQuery.fetch();
 
