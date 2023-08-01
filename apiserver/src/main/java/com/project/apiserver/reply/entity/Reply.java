@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -20,13 +21,14 @@ import lombok.NoArgsConstructor;
 @ToString(excludes = {"member", "board"})
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Reply extends BaseEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rno;
     private String reply;
-    private Integer ord;
+    private Boolean ord;
     
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
