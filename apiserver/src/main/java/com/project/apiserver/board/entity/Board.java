@@ -30,9 +30,17 @@ public class Board extends BaseEntity {
     private String title;
     private String content;
 
+    private boolean delFlag;
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
+
+    public void changeDelFlag(boolean delFlag) {
+        this.delFlag = delFlag;
+    }
+    public void changeContent(String content){
+        this.content = content;
+    }
 }

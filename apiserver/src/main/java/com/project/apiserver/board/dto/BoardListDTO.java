@@ -25,7 +25,7 @@ public class BoardListDTO {
     private Long rCnt;
 
     private Integer cateno;
-
+    private boolean delFlag;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime regDate;
     

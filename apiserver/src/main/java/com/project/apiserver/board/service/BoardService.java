@@ -16,4 +16,6 @@ public interface BoardService {
    
 
    void registBoard(BoardReadDTO boardReadDTO);
+
+   
 }
