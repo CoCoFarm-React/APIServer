@@ -7,10 +7,10 @@ import com.project.apiserver.board.entity.Board;
 import com.project.apiserver.member.entity.Member;
 
 import groovy.transform.ToString;
-import groovy.transform.builder.Builder;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,7 +23,7 @@ public class ReplyDTO {
     
     private Long rno;
     private String reply;
-    private Integer ord;
+    private boolean ord;
     
     private String email;
     private Long bno;

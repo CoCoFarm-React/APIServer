@@ -13,5 +13,7 @@ import jakarta.transaction.Transactional;
 public interface ReplyService {
 
     PageResponseDTO<ReplyDTO> replyList(ReplyPageRequestDTO requestDTO);
+
+    void replyRegister(ReplyDTO replyDTO);
     
 }
