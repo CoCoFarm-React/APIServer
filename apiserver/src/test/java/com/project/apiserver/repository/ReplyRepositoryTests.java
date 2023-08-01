@@ -3,12 +3,14 @@ package com.project.apiserver.repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.project.apiserver.board.entity.Board;
 import com.project.apiserver.member.entity.Member;
+import com.project.apiserver.reply.dto.ReplyDTO;
 import com.project.apiserver.reply.entity.Reply;
 import com.project.apiserver.reply.repository.ReplyRepository;
 
@@ -20,6 +22,7 @@ public class ReplyRepositoryTests {
     
     @Autowired
     private ReplyRepository replyRepository;
+    
 
     @Test
     public void replyInsertTest(){
@@ -48,8 +51,10 @@ public class ReplyRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 20, Sort.by("rno").ascending());
 
-        log.info(replyRepository.getReplyList(board.getBno(), pageable));
 
+        Page<ReplyDTO> result =  replyRepository.getReplyList(100L, pageable);
+
+        
     }
 
 

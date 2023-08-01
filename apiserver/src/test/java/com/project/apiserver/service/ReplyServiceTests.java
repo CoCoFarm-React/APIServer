@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.project.apiserver.reply.dto.ReplyDTO;
+import com.project.apiserver.reply.dto.ReplyPageRequestDTO;
 import com.project.apiserver.reply.service.ReplyService;
 
 import lombok.extern.log4j.Log4j2;
@@ -22,6 +23,16 @@ public class ReplyServiceTests {
         ReplyDTO dto = ReplyDTO.builder().bno(100L).ord(false).reply("대댓글").build();
 
         replyService.replyRegister(dto);
+
+    }
+
+    @Test void readListTest(){
+
+        ReplyPageRequestDTO requestDTO = ReplyPageRequestDTO.builder().bno(100L).last(true).build();
+
+        replyService.replyList(requestDTO);
+
+        log.info(replyService.replyList(requestDTO));
 
     }
 
