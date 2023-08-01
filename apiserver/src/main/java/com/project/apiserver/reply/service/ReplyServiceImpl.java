@@ -13,14 +13,14 @@ import org.springframework.stereotype.Service;
 import com.project.apiserver.common.PageResponseDTO;
 import com.project.apiserver.reply.dto.ReplyDTO;
 import com.project.apiserver.reply.dto.ReplyPageRequestDTO;
-
+import com.project.apiserver.reply.entity.Reply;
 import com.project.apiserver.reply.repository.ReplyRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @Service
-
+@Log4j2
 @RequiredArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
 
