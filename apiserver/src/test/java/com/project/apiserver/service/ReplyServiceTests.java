@@ -14,19 +14,6 @@ import lombok.extern.log4j.Log4j2;
 public class ReplyServiceTests {
     
 
-    @Autowired
-    private ReplyService replyService;
 
-    @Test
-    public void insertTests(){
-
-        ReplyDTO dto = ReplyDTO.builder()
-        .reply("insert Service Test")
-        .build();
-
-        log.info(dto);
-
-        log.info(replyService.insertOne(dto));
     
-    }
 }

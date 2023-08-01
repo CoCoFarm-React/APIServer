@@ -25,7 +25,7 @@ public class ReplyDTO {
     private Long rno;
     private String reply;
     @Builder.Default
-    private Boolean ord = false;
+    private boolean ord = false;
     
     private String email;
     private Long bno;

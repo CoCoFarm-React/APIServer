@@ -56,16 +56,5 @@ public class ReplyServiceImpl implements ReplyService {
 
     }
 
-    @Override
-    public Long insertOne(ReplyDTO replyDTO) {
-
-        Reply reply = modelMapper.map(replyDTO, Reply.class);
-
-        replyRepository.save(reply);
-
-        Long newRno = reply.getRno();
-
-        return newRno;
-    }
-
+ 
 }

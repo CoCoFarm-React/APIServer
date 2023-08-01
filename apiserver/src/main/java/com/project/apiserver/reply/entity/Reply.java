@@ -28,7 +28,7 @@ public class Reply extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rno;
     private String reply;
-    private Boolean ord;
+    private boolean ord;
     
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;

@@ -14,6 +14,5 @@ public interface ReplyService {
 
     PageResponseDTO<ReplyDTO> replyList(ReplyPageRequestDTO requestDTO);
 
-    Long insertOne(ReplyDTO replyDTO);
     
 }
