@@ -56,5 +56,13 @@ public class ReplyServiceImpl implements ReplyService {
 
     }
 
- 
+    @Override
+    public void replyRegister(ReplyDTO replyDTO) {
+
+        Reply reply = modelMapper.map(replyDTO, Reply.class);
+
+        replyRepository.save(reply);
+
+    }
+
 }

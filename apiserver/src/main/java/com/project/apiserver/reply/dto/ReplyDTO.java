@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.project.apiserver.board.entity.Board;
 import com.project.apiserver.member.entity.Member;
 
-
+import groovy.transform.ToString;
+import groovy.transform.builder.Builder;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
