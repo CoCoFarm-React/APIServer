@@ -34,14 +34,17 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardReadDTO getOne(Long bno) {
-       
-
-       
-
-      
 
         return boardRepository.getBoardInfo(bno);
         
+    }
+
+    @Override
+    public void registBoard(BoardReadDTO boardReadDTO) {
+        
+        Board board = modelMapper.map(boardReadDTO, Board.class);
+
+        boardRepository.save(board);
     }
 
     

@@ -25,7 +25,7 @@ import lombok.extern.log4j.Log4j2;
 @RestController
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("api/replies/")
+@RequestMapping("/api/replies/")
 @CrossOrigin
 public class ReplyController {
 

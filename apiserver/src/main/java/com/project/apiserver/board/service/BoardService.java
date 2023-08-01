@@ -13,4 +13,7 @@ public interface BoardService {
    PageResponseDTO<BoardListDTO> getList (PageRequestDTO pageRequestDTO);    
 
    BoardReadDTO getOne(Long bno);
+   
+
+   void registBoard(BoardReadDTO boardReadDTO);
 }
