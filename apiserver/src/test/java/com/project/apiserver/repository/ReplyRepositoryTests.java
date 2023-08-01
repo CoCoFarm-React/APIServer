@@ -31,7 +31,7 @@ public class ReplyRepositoryTests {
 
             Reply reply = Reply.builder()
                 .reply("test reply" + i)
-                .ord(true)
+                .ord(false)
                 .board(board)
                 .member(member)
                 .build();

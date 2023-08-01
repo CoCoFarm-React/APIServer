@@ -23,7 +23,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RequiredArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
-    
+
     private final ReplyRepository replyRepository;
     private final ModelMapper modelMapper;
 
@@ -32,11 +32,11 @@ public class ReplyServiceImpl implements ReplyService {
 
         boolean last = requestDTO.isLast();
         int pageNum = requestDTO.getPage();
-        
-        if(last) {
+
+        if (last) {
             long totalCount = replyRepository.getCountReply(requestDTO.getBno());
-            
-            pageNum = (int)(Math.ceil(totalCount / (double) requestDTO.getSize()));
+
+            pageNum = (int) (Math.ceil(totalCount / (double) requestDTO.getSize()));
             pageNum = pageNum <= 0 ? 1 : pageNum;
         }
 
@@ -46,8 +46,8 @@ public class ReplyServiceImpl implements ReplyService {
 
         long totalReplyCount = result.getTotalElements();
 
-        List<ReplyDTO> dtoList = result.get().map(dto -> 
-            modelMapper.map(dto, ReplyDTO.class)).collect(Collectors.toList());
+        List<ReplyDTO> dtoList = result.get().map(dto -> modelMapper.map(dto, ReplyDTO.class))
+                .collect(Collectors.toList());
 
         PageResponseDTO<ReplyDTO> responseDTO = new PageResponseDTO<>(dtoList, totalReplyCount, requestDTO);
         responseDTO.setPage(pageNum);

@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.project.apiserver.board.entity.Board;
 import com.project.apiserver.member.entity.Member;
 
-import groovy.transform.ToString;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @AllArgsConstructor
@@ -23,7 +23,8 @@ public class ReplyDTO {
     
     private Long rno;
     private String reply;
-    private boolean ord;
+    @Builder.Default
+    private boolean ord = false;
     
     private String email;
     private Long bno;
