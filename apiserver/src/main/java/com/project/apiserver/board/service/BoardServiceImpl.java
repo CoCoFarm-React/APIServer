@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService {
 
        
 
-       BoardListDTO board = boardRepository.getBoard(bno);
+       //BoardListDTO board = boardRepository.getBoard(bno);
 
         return null;
         

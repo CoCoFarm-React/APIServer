@@ -57,7 +57,7 @@ public class ReplyRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 20, Sort.by("rno").ascending());
 
-        Page<ReplyDTO> result =  replyRepository.getReplyList(100L, pageable);
+        //Page<ReplyDTO> result =  replyRepository.getReplyList(100L, pageable);
 
         
     }
@@ -88,7 +88,5 @@ public class ReplyRepositoryTests {
         replyRepository.save(reply);
 
     }
-
-    
 
 }
