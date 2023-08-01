@@ -15,18 +15,23 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BoardListDTO {
-
+public class BoardReadDTO {
+    
     private Long bno;
     private String title;
+    private String content;
     private String email;
     private String nickname;
     private String catename;
-    private Long rCnt;
+
 
     private Integer cateno;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime regDate;
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime modDate;
+
     
 }

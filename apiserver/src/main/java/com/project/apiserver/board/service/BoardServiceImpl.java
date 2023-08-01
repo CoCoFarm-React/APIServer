@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.apiserver.board.dto.BoardListDTO;
+import com.project.apiserver.board.dto.BoardReadDTO;
 import com.project.apiserver.board.entity.Board;
 import com.project.apiserver.board.entity.QBoard;
 import com.project.apiserver.board.repository.BoardRepository;
@@ -32,14 +33,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardListDTO getOne(Long bno) {
+    public BoardReadDTO getOne(Long bno) {
        
 
        
 
-       BoardListDTO board = boardRepository.getBoard(bno);
+      
 
-        return null;
+        return boardRepository.getBoardInfo(bno);
         
     }
 

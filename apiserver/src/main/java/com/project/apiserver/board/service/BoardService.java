@@ -1,6 +1,7 @@
 package com.project.apiserver.board.service;
 
 import com.project.apiserver.board.dto.BoardListDTO;
+import com.project.apiserver.board.dto.BoardReadDTO;
 import com.project.apiserver.common.PageRequestDTO;
 import com.project.apiserver.common.PageResponseDTO;
 
@@ -11,5 +12,5 @@ public interface BoardService {
 
    PageResponseDTO<BoardListDTO> getList (PageRequestDTO pageRequestDTO);    
 
-   BoardListDTO getOne(Long bno);
+   BoardReadDTO getOne(Long bno);
 }

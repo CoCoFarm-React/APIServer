@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import com.project.apiserver.board.dto.BoardListDTO;
+import com.project.apiserver.board.dto.BoardReadDTO;
 import com.project.apiserver.board.entity.Board;
 import com.project.apiserver.board.repository.BoardRepository;
 import com.project.apiserver.common.Category;
@@ -63,7 +64,7 @@ public class BoardRepositoryTests {
     public void readest() {
 
 
-       BoardListDTO result = boardRepository.getBoard(5L);
+       BoardReadDTO result = boardRepository.getBoardInfo(3L);
         log.info(result);
 
     }
