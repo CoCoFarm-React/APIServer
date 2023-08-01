@@ -1,5 +1,7 @@
 package com.project.apiserver.repository;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +36,7 @@ public class ReplyRepositoryTests {
 
             Reply reply = Reply.builder()
                 .reply("test reply" + i)
-                .ord(false)
+                .ord(true)
                 .board(board)
                 .member(member)
                 .build();

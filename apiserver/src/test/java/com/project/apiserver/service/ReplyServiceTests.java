@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.project.apiserver.common.PageRequestDTO;
 import com.project.apiserver.reply.dto.ReplyDTO;
 import com.project.apiserver.reply.dto.ReplyPageRequestDTO;
 import com.project.apiserver.reply.service.ReplyService;
