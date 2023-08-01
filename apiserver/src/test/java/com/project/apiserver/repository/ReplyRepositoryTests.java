@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 
 import com.project.apiserver.board.entity.Board;
 import com.project.apiserver.member.entity.Member;
+import com.project.apiserver.reply.dto.ReplyDTO;
 import com.project.apiserver.reply.entity.Reply;
 import com.project.apiserver.reply.repository.ReplyRepository;
 
@@ -23,6 +24,7 @@ public class ReplyRepositoryTests {
     
     @Autowired
     private ReplyRepository replyRepository;
+    
 
     @Test
     public void replyInsertTest(){
@@ -34,7 +36,7 @@ public class ReplyRepositoryTests {
 
             Reply reply = Reply.builder()
                 .reply("test reply" + i)
-                .ord(false)
+                .ord(true)
                 .board(board)
                 .member(member)
                 .build();
@@ -51,19 +53,10 @@ public class ReplyRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 20, Sort.by("rno").ascending());
 
-        Page<Object[]> replyPage = replyRepository.getReplyList(board.getBno(), pageable);
-        List<Object[]> replyList = replyPage.getContent();
 
-        // for (Object[] objects : replyList) {
-        //     log.info(objects[0]);
-        //     log.info(objects[1]);
+        Page<ReplyDTO> result =  replyRepository.getReplyList(100L, pageable);
 
-
-        // }
-
-        // log.info(replyPage);
-        // log.info(replyList);
-
+        
     }
 
 

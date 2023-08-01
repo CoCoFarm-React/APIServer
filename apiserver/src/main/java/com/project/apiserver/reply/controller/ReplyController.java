@@ -29,8 +29,10 @@ public class ReplyController {
     @GetMapping("{bno}/list")
     public PageResponseDTO<ReplyDTO> repliseList(@PathVariable("bno") Long bno, ReplyPageRequestDTO requestDTO){
 
+        
+        
 
-
+        log.info(replyService.replyList(requestDTO));
         return  replyService.replyList(requestDTO);
 
     }

@@ -3,11 +3,7 @@ package com.project.apiserver.reply.dto;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.project.apiserver.board.entity.Board;
-import com.project.apiserver.member.entity.Member;
 
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
