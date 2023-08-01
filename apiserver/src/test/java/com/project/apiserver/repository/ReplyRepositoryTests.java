@@ -1,8 +1,11 @@
 package com.project.apiserver.repository;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -48,7 +51,18 @@ public class ReplyRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 20, Sort.by("rno").ascending());
 
-        log.info(replyRepository.getReplyList(board.getBno(), pageable));
+        Page<Object[]> replyPage = replyRepository.getReplyList(board.getBno(), pageable);
+        List<Object[]> replyList = replyPage.getContent();
+
+        // for (Object[] objects : replyList) {
+        //     log.info(objects[0]);
+        //     log.info(objects[1]);
+
+
+        // }
+
+        // log.info(replyPage);
+        // log.info(replyList);
 
     }
 

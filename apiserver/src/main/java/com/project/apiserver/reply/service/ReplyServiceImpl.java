@@ -44,14 +44,15 @@ public class ReplyServiceImpl implements ReplyService {
 
         Page<Object[]> result = replyRepository.getReplyList(requestDTO.getBno(), pageable);
 
+
         long totalReplyCount = result.getTotalElements();
 
-        List<ReplyDTO> dtoList = result.get().map(dto -> modelMapper.map(dto, ReplyDTO.class))
+        List<ReplyDTO> dtoList = result.stream().map(dto -> modelMapper.map(dto, ReplyDTO.class))
                 .collect(Collectors.toList());
 
         PageResponseDTO<ReplyDTO> responseDTO = new PageResponseDTO<>(dtoList, totalReplyCount, requestDTO);
         responseDTO.setPage(pageNum);
-
+        
         return responseDTO;
 
     }
