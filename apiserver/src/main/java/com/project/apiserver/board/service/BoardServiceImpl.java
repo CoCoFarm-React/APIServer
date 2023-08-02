@@ -18,9 +18,11 @@ import com.project.apiserver.common.PageRequestDTO;
 import com.project.apiserver.common.PageResponseDTO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
