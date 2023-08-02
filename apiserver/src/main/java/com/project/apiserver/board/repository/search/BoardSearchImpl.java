@@ -45,8 +45,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
             BooleanBuilder searchBuilder = new BooleanBuilder();         
 
             if (category != null && category > 0 ) {
-                searchBuilder.or(qBoard.category.cateno.eq(5));
-                if(category != 5)searchBuilder.or(qBoard.category.cateno.eq(category));
+                searchBuilder.or(qBoard.category.cateno.eq(category));
             }
 
             for (String typeword : searchArr) {
