@@ -79,11 +79,13 @@ public class ReplyServiceImpl extends Exception implements ReplyService{
 
         reply.changeDelFlag(true);
         reply.changeReply("삭제되었습니다.");
+        
 
         replyRepository.save(reply);
 
     }
 
+    // 댓글 수정
     @Override
     public void modifyReply(ReplyDTO replyDTO) {
 

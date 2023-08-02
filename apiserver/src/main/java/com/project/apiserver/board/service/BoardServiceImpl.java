@@ -51,6 +51,36 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.save(board);
     }
 
+    @Override
+    public void deleteBoard(Long bno) {
+
+        Optional<Board> result = boardRepository.findById(bno);
+
+        Board board = result.orElseThrow();
+
+        board.changeDelFlag(true);
+        board.changeContent("삭제된 게시물 입니다.");
+        board.changeTitle("삭제된 게시물 입니다.");
+
+        boardRepository.save(board);
+
+
+    }
+
+    @Override
+    public void modifyBoard(BoardReadDTO boardReadDTO) {
+
+        Optional<Board> result = boardRepository.findById(boardReadDTO.getBno());
+
+        Board board = result.orElseThrow();
+
+        board.changeContent(boardReadDTO.getContent());
+        board.changeTitle(boardReadDTO.getTitle());
+
+        boardRepository.save(board);
+        
+    }
+
     
 
 }

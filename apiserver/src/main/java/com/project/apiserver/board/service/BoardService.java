@@ -10,12 +10,18 @@ import jakarta.transaction.Transactional;
 @Transactional
 public interface BoardService {
 
-   PageResponseDTO<BoardListDTO> getList (PageRequestDTO pageRequestDTO);    
+   PageResponseDTO<BoardListDTO> getList(PageRequestDTO pageRequestDTO);
 
    BoardReadDTO getOne(Long bno);
-   
 
    void registBoard(BoardReadDTO boardReadDTO);
 
+   //삭제
+   void deleteBoard(Long bno);
+
+   //수정
+   void modifyBoard(BoardReadDTO boardReadDTO);
+
    
+
 }
