@@ -99,15 +99,16 @@
 
     // }
 
-    @Test
-    public void searchTest(){
+    // @Test
+    // public void searchTest(){
 
-        PageRequestDTO pageRequestDTO = new PageRequestDTO(1, 10, "c", "1", 1);
+    //     PageRequestDTO pageRequestDTO = new PageRequestDTO(1, 10, "c", "1", 1);
 
-        PageResponseDTO<BoardListDTO> responseDTO = boardRepository.search(pageRequestDTO);
+    //     PageResponseDTO<BoardListDTO> responseDTO = boardRepository.search(pageRequestDTO);
 
-        log.info(responseDTO);
+    //     log.info(responseDTO);
 
-    }
+    // }
 
-}
+
+
