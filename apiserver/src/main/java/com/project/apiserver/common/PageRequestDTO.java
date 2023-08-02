@@ -1,11 +1,13 @@
 package com.project.apiserver.common;
 
 
+import groovy.transform.builder.Builder;
 import lombok.Data;
 import lombok.ToString;
 
 @Data
 @ToString
+@Builder
 public class PageRequestDTO {
 
     // 가장 기본적이므로 Default 값필요
@@ -14,7 +16,9 @@ public class PageRequestDTO {
     private int size = 10;
 
     private String type, keyword;
-    private Integer category;
+
+    
+    private Integer cateno;
 
     public PageRequestDTO() {
         this(1,10);
@@ -24,17 +28,20 @@ public class PageRequestDTO {
         this(page,size,null, null, null);
         
     }
-    public PageRequestDTO(int page, int size, String type, String keyword, Integer category){
+    public PageRequestDTO(int page, int size, String type, String keyword, Integer cateno){
     
         this.page = page <=0 ? 1: page;
         this.size = size <0 || size >= 100? 10 : size;
 
         this.type = type;
         this.keyword = keyword;
-        this.category = category;
+        this.cateno = cateno;
     }
-    public void setCategory(int category){
-        this.category = category;
+    public void setCategory(Integer cateno){
+        // if(category<0 || category==null){
+        //     this.category= 5;
+        // }
+        this.cateno = cateno;
     }
 
 }

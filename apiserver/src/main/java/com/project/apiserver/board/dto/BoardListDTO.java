@@ -22,9 +22,10 @@ public class BoardListDTO {
     private String email;
     private String nickname;
     private String catename;
+    private Integer cateno;
     private Long rcnt;
 
-    private Integer cateno;
+    
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime regDate;

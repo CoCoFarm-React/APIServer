@@ -24,7 +24,7 @@ public class BoardReadDTO {
     private String nickname;
     private String catename;
 
-
+    
     private Integer cateno;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
