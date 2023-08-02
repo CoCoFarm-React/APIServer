@@ -64,13 +64,13 @@ public class BoardRepositoryTests {
     public void readest() {
 
 
-       IBoardListDTO result = boardRepository.getBoard(5L);
-        log.info(result);
+    //    IBoardListDTO result = boardRepository.getBoard(5L);
+    //     log.info(result);
 
-        log.info(result.getBno());
-        log.info(result.getEmail());
-        log.info(result.getCatename());
-        log.info(result.getNickname());
+    //     log.info(result.getBno());
+    //     log.info(result.getEmail());
+    //     log.info(result.getCatename());
+    //     log.info(result.getNickname());
 
 
     }
