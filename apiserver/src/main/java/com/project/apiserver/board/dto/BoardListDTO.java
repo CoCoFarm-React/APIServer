@@ -10,10 +10,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-//@Data
+@Data
 @ToString
+@AllArgsConstructor
 @NoArgsConstructor
-//@Builder
+@Builder
 public class BoardListDTO {
 
     private Long bno;
@@ -25,92 +26,6 @@ public class BoardListDTO {
 
     private Integer cateno;
 
-    
-
-
-
-    public Long getBno() {
-        return bno;
-    }
-
-
-
-
-
-    public String getTitle() {
-        return title;
-    }
-
-
-
-
-
-    public String getEmail() {
-        return email;
-    }
-
-
-
-
-
-    public String getNickname() {
-        return nickname;
-    }
-
-
-
-
-
-    public String getCatename() {
-        return catename;
-    }
-
-
-
-
-
-    public Long getRcnt() {
-        return rcnt;
-    }
-
-
-
-
-
-    public Integer getCateno() {
-        return cateno;
-    }
-
-
-
-
-
-    public LocalDateTime getRegDate() {
-        return regDate;
-    }
-
-
-
-
-
-    public BoardListDTO(Long bno, String title, String email, String nickname, String catename, Long rcnt,
-            Integer cateno, LocalDateTime regDate) {
-        this.bno = bno;
-        this.title = title;
-        this.email = email;
-        this.nickname = nickname;
-        this.catename = catename;
-        this.rcnt = rcnt;
-        this.cateno = cateno;
-        this.regDate = regDate;
-    }
-
-
-
-
-
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime regDate;
-    
-
-}
+}    

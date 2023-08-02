@@ -33,5 +33,8 @@ public class PageRequestDTO {
         this.keyword = keyword;
         this.category = category;
     }
+    public void setCategory(int category){
+        this.category = category;
+    }
 
 }

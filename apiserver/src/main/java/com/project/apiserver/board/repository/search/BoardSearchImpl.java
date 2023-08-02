@@ -31,11 +31,9 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         QReply qReply = QReply.reply1;
         String keyword = requestDTO.getKeyword();
         String searchType = requestDTO.getType();
-        Integer category = requestDTO.getCategory();
     
         JPQLQuery<Board> searchQuery = from(qBoard);
         searchQuery.leftJoin(qMember).on(qMember.eq(qBoard.member));
-        searchQuery.leftJoin(qCategory).on(qCategory.eq(qBoard.category));
         searchQuery.leftJoin(qReply).on(qReply.board.eq(qBoard));
 
         if (keyword != null && searchType != null) {
@@ -44,9 +42,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
             // BooleanBuilder 생성
             BooleanBuilder searchBuilder = new BooleanBuilder();         
 
-            if (category != null && category > 0 ) {
-                searchBuilder.or(qBoard.category.cateno.eq(category));
-            }
+
 
             for (String typeword : searchArr) {
 
@@ -70,8 +66,9 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
                 qMember.email,
                 qMember.nickname,
                 qCategory.catename,
+                qCategory.cateno,
                 qBoard.regDate,
-                qReply.countDistinct().as("rCnt")
+                qReply.countDistinct().as("rcnt")
                 ));
         long totalCount = listQuery.fetchCount();
         List<BoardListDTO> list = listQuery.fetch();

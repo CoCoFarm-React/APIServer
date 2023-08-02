@@ -89,7 +89,7 @@ public class BoardRepositoryTests {
     @Test
     public void searchTest(){
 
-        PageRequestDTO pageRequestDTO = new PageRequestDTO(1, 10, "c", "1", 1);
+        PageRequestDTO pageRequestDTO = new PageRequestDTO();
 
         PageResponseDTO<BoardListDTO> responseDTO = boardRepository.search(pageRequestDTO);
 
