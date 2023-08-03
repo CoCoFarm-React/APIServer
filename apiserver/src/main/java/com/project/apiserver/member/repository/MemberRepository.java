@@ -12,7 +12,7 @@ import com.project.apiserver.member.repository.search.MemberSearch;
 public interface MemberRepository extends JpaRepository<Member, Long>, MemberSearch{
 
     // 쿼리 메소드
-    @EntityGraph(attributePaths = "role")
-    List<Member> findByRole(MemberRole role);
+    // @EntityGraph(attributePaths = "role")
+    // List<Member> findByRole(MemberRole role);
 
 }

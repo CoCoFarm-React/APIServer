@@ -12,10 +12,5 @@ public interface MemberSearch {
     
     MemberPageResponseDTO<MemberDTO> searchMember(MemberPageRequestDTO requestDTO);
 
-    default Pageable makePageable(MemberPageRequestDTO requestDTO){
 
-        Pageable pageable = PageRequest.of(requestDTO.getPage()-1, requestDTO.getSize(),Sort.by("regDate").descending());
-
-        return pageable;
-    }
 }

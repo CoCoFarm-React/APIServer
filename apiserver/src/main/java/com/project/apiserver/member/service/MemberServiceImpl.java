@@ -29,12 +29,13 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<MemberDTO> getList(MemberRole memberRole) {
 
-        List<Member> result = repository.findByRole(memberRole);
+        // List<Member> result = repository.findByRole(memberRole);
 
-        List<MemberDTO> list = result.stream().map(dto -> modelMapper.map(dto, MemberDTO.class))
-        .collect(Collectors.toList());
+        // List<MemberDTO> list = result.stream().map(dto -> modelMapper.map(dto, MemberDTO.class))
+        // .collect(Collectors.toList());
 
-        return list;
+        // return list;
+        return null;
     }
 
 

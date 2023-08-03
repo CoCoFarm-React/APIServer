@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import com.project.apiserver.board.dto.BoardListDTO;
@@ -29,10 +31,17 @@ import com.querydsl.core.types.Projections;
 @Log4j2
 public class MemberSearchImpl extends QuerydslRepositorySupport implements MemberSearch {
 
-        public MemberSearchImpl() {
+    public MemberSearchImpl() {
         super(Member.class);
     }
 
+    Pageable makePageable(MemberPageRequestDTO requestDTO){
+
+        //Pageable pageable = PageRequest.of(requestDTO.getPage()-1, requestDTO.getSize(),Sort.by("mno").descending());
+        Pageable pageable = PageRequest.of(requestDTO.getPage()-1, requestDTO.getSize(), Sort.by("mno").descending());
+
+        return pageable;
+    }
 
 
 
@@ -65,6 +74,7 @@ public class MemberSearchImpl extends QuerydslRepositorySupport implements Membe
 
 
         Pageable pageable = makePageable(requestDTO);
+        
         QMember qMember = QMember.member;
 
         // String keyword = requestDTO.getKeyword();
@@ -76,7 +86,7 @@ public class MemberSearchImpl extends QuerydslRepositorySupport implements Membe
         log.info("--------------------------------------2");
         
         // searchQuery.where(qMember.category.cateno.eq(cateno1));
-        searchQuery.where(qMember.nickname.contains(keyword));
+        //searchQuery.where(qMember.nickname.contains(keyword));
         
         log.info("-------------------------------------3");
 
@@ -95,20 +105,26 @@ public class MemberSearchImpl extends QuerydslRepositorySupport implements Membe
         log.info("--------------------------------------");
         this.getQuerydsl().applyPagination(pageable, searchQuery);
 
+        searchQuery.fetch();
+
         // searchQuery.groupBy(qMember);
 
-        JPQLQuery<BoardListDTO> listQuery = searchQuery.select(Projections.bean(
-                BoardListDTO.class,
-                qMember.email,
-                qMember.nickname,
-                qMember.regDate
-                ));
+        // JPQLQuery<BoardListDTO> listQuery = searchQuery.select(Projections.bean(
+        //         BoardListDTO.class,
+        //         qMember.email,
+        //         qMember.nickname,
+        //         qMember.regDate
+        //         ));
                         
-        long totalCount = listQuery.fetchCount();
-        List<BoardListDTO> list = listQuery.fetch();
-        log.info("==================================================");
-        log.info(list);
-        log.info("==================================================");
+        // this.getQuerydsl().applyPagination(pageable, listQuery);                
+        
+        // List<BoardListDTO> list = listQuery.fetch();
+
+        // long totalCount = listQuery.fetchCount();
+
+        // log.info("==================================================");
+        // log.info(list);
+        // log.info("==================================================");
 
 
 

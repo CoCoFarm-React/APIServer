@@ -69,9 +69,7 @@ public class MemberRepositoryTests {
 
         MemberPageRequestDTO memberPageRequestDTO = new MemberPageRequestDTO(1,10);
 
-
-        
-
         log.info(repository.searchMember(memberPageRequestDTO));
+    
     }
 }

@@ -21,17 +21,18 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "member")
+@Table(name = "tbl_member")
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = {"role"})
 public class Member extends BaseEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mno;
+
     private String email;
 
     private String pw;
