@@ -11,7 +11,11 @@ import com.project.apiserver.board.entity.QBoard;
 import com.project.apiserver.common.PageRequestDTO;
 import com.project.apiserver.common.PageResponseDTO;
 import com.project.apiserver.common.QCategory;
+<<<<<<< HEAD
 
+=======
+import com.project.apiserver.member.entity.QMember;
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
 import com.project.apiserver.reply.entity.QReply;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
@@ -35,6 +39,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         QMemberAccount qMember = QMemberAccount.memberAccount;
         QCategory qCategory = QCategory.category;
         QReply qReply = QReply.reply1;
+<<<<<<< HEAD
 
         String keyword = requestDTO.getKeyword();
         String searchType = requestDTO.getType();
@@ -44,6 +49,16 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         JPQLQuery<Board> searchQuery = from(qBoard);
         
         log.info("--------------------------------------1");
+=======
+        String keyword = requestDTO.getKeyword();
+        String searchType = requestDTO.getType();
+        Integer category = requestDTO.getCategory();
+    
+        JPQLQuery<Board> searchQuery = from(qBoard);
+        searchQuery.leftJoin(qMember).on(qMember.eq(qBoard.member));
+        searchQuery.leftJoin(qCategory).on(qCategory.eq(qBoard.category));
+        searchQuery.leftJoin(qReply).on(qReply.board.eq(qBoard));
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
 
         searchQuery.leftJoin(qBoard.category, qCategory);
         searchQuery.leftJoin(qBoard.member, qMember);
@@ -60,6 +75,14 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
             String[] searchArr = searchType.split("");
             // BooleanBuilder 생성
             BooleanBuilder searchBuilder = new BooleanBuilder();         
+<<<<<<< HEAD
+=======
+
+            if (category != null && category > 0 ) {
+                searchBuilder.or(qBoard.category.cateno.eq(category));
+            }
+
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
             for (String typeword : searchArr) {
 
                 switch (typeword) {
@@ -85,12 +108,19 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
                 qBoard.title,
                 qMember.email,
                 qMember.nickname,
+<<<<<<< HEAD
                 qBoard.category.catename,
                 qBoard.category.cateno,
                 qBoard.regDate,
                 qReply.countDistinct().as("rcnt")
                 ));
                         
+=======
+                qCategory.catename,
+                qBoard.regDate,
+                qReply.countDistinct().as("rCnt")
+                ));
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
         long totalCount = listQuery.fetchCount();
         List<BoardListDTO> list = listQuery.fetch();
         log.info(list);

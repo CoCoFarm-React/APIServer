@@ -1,9 +1,15 @@
 package com.project.apiserver.board.controller;
 
+<<<<<<< HEAD
 import java.util.Map;
 
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.web.bind.annotation.CrossOrigin;
+=======
+
+import java.util.Map;
+
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,11 +31,15 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RequiredArgsConstructor
 @RequestMapping("/api/board/")
+<<<<<<< HEAD
 @CrossOrigin
+=======
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
 public class BoardController {
 
     private final BoardService boardService;
 
+<<<<<<< HEAD
     // 하나만
     @GetMapping("{bno}")
     public BoardReadDTO getOne(@PathVariable("bno") Long bno) {
@@ -68,6 +78,46 @@ public class BoardController {
     // 게시글 수정
     @PutMapping("")
     public Map<String, String> modifyBoard(BoardReadDTO boardReadDTO) {
+=======
+    //하나만
+    @GetMapping("{bno}")
+    public BoardReadDTO getOne(@PathVariable("bno") Long bno){
+
+        return boardService.getOne(bno);
+    }
+    
+    //전체 리스트 및 검색
+    @GetMapping("list")
+    public PageResponseDTO<BoardListDTO> getList(PageRequestDTO requestDTO){
+        
+        return boardService.getList(requestDTO);
+    }
+
+    //게시글 등록
+    @PostMapping("")
+    public Map<String,String>registBoard(BoardReadDTO boardReadDTO){
+
+        boardService.registBoard(boardReadDTO);
+
+        return Map.of("result", "success");
+    }
+
+
+    //게시글 삭제
+    @DeleteMapping("{bno}")
+    public Map<String,String> deleteBoard(@PathVariable("bno") Long bno){
+
+    boardService.deleteBoard(bno);
+
+    return Map.of("result", "success");
+    }
+
+    //게시글 수정
+    @PutMapping("")
+    public Map<String,String>modifyBoard(BoardReadDTO boardReadDTO){
+
+        
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
 
         boardService.modifyBoard(boardReadDTO);
 

@@ -14,7 +14,11 @@ import com.project.apiserver.reply.entity.Reply;
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
 
     // Object[] 배열 대신 dto로 받는 쿼리
+<<<<<<< HEAD
     @Query("select new com.project.apiserver.reply.dto.ReplyDTO(r.rno, r.reply, r.ord, r.member.nickname, r.member.email, r.board.bno, r.regDate, r.modDate) from Reply r left join MemberAccount m on m.email = r.member.email where r.board.bno = :bno")
+=======
+    @Query("select new com.project.apiserver.reply.dto.ReplyDTO(r.rno, r.reply, r.ord, r.member.nickname, r.member.email, r.board.bno, r.regDate, r.modDate) from Reply r left join Member m on m.email = r.member.email where r.board.bno = :bno")
+>>>>>>> 56ed950fb1dada711163e9c3882d3ed3afe9d0a9
     Page<ReplyDTO> getReplyList(@Param("bno") Long bno, Pageable pageable);
 
     // 댓글 수 카운트
