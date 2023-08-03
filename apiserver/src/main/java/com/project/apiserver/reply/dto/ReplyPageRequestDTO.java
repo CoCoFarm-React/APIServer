@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 
-@ToString
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Data
+@ToString
 public class ReplyPageRequestDTO extends PageRequestDTO {
     
     private Long bno;

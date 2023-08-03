@@ -56,10 +56,10 @@ public class MemberRepositoryTests {
         // log.info("----------");
         // list.forEach(mb ->log.info(mb.getRole()));
         
-        List<Member> list = repository.findByRole(MemberRole.CONSUMER);
+        //List<Member> list = repository.findByRole(MemberRole.CONSUMER);
 
-        log.info(list);
-        list.forEach(member->log.info(member.getRole()));
+        //log.info(list);
+        //list.forEach(member->log.info(member.getRole()));
     }
 
 

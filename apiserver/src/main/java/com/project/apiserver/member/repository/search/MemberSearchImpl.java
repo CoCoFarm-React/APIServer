@@ -73,15 +73,15 @@ public class MemberSearchImpl extends QuerydslRepositorySupport implements Membe
 
 
 
-        Pageable pageable = makePageable(requestDTO);
-        
-        QMember qMember = QMember.member;
+        Pageable pageable = PageRequest.of(requestDTO.getPage()-1, requestDTO.getSize(), Sort.by("mno"));
+
+        QMember member = QMember.member;
 
         // String keyword = requestDTO.getKeyword();
         String keyword = "1";
         // String searchType = requestDTO.getType();
 
-        JPQLQuery<Member> searchQuery = from(qMember); 
+        JPQLQuery<Member> searchQuery = from(member); 
         
         log.info("--------------------------------------2");
         
