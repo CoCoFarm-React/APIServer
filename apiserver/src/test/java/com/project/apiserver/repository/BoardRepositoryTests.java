@@ -37,7 +37,7 @@ public class BoardRepositoryTests {
         .catename("관리자문의")
         .build();
 
-        Member member = Member.builder().email("aaa0@email.com").build();
+        Member member = Member.builder().mno(1L).build();
         
         log.info("Start insert");
 
@@ -66,15 +66,16 @@ public class BoardRepositoryTests {
         .catename("공지사항")
         .build();
         Member member = Member.builder().email("aaa99@email.com").build();
-
+        for(int i = 0; i<9; i++){
         Board board =Board.builder()
         .category(category)
         .member(member)
-        .title("공지사항입니다~")
-        .content("차은우가 하고있어요")
+        .title("공지사항입니다~" +i)
+        .content("차은우가 하고있어요" +i)
         .build();
 
         boardRepository.save(board);
+        }
     }
 
     // @Test

@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -28,6 +30,8 @@ import lombok.ToString;
 public class Member extends BaseEntity {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long mno;
     private String email;
 
     private String pw;
@@ -38,11 +42,12 @@ public class Member extends BaseEntity {
     @Builder.Default
     private List<MemberRole> role = new ArrayList<>();
 
-    // Role 추가하는 메소드
+    private String intro;
 
+    // Role 추가하는 메소드
     public void addRole (MemberRole data){
 
-        MemberRole addrole =data;
+        MemberRole addrole = data;
 
         role.add(addrole);
         

@@ -15,7 +15,6 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
 
-import groovyjarjarantlr4.v4.parse.ANTLRParser.qid_return;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -48,41 +47,34 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         searchQuery.leftJoin(qBoard.member, qMember);
         searchQuery.leftJoin(qReply).on(qReply.board.eq(qBoard));
 
-        // searchQuery.leftJoin(qCategory).on(qCategory.eq(qBoard.category));
-        // searchQuery.leftJoin(qMember).on(qMember.eq(qBoard.member));
-        // searchQuery.leftJoin(qReply).on(qReply.board.eq(qBoard)); 
 
         log.info("--------------------------------------2");
         
-        searchQuery.where(qBoard.category.cateno.eq(cateno1).or(qBoard.category.cateno.eq(5)));
+        searchQuery.where(qBoard.category.cateno.eq(cateno1));
         
         log.info("-------------------------------------3");
-        // if (keyword != null && searchType != null) {
-        //     // tc => [t,c]
-        //     String[] searchArr = searchType.split("");
-        //     // BooleanBuilder 생성
-        //     BooleanBuilder searchBuilder = new BooleanBuilder();         
-        //     for (String typeword : searchArr) {
+        if (keyword != null && searchType != null) {
+            // tc => [t,c]
+            String[] searchArr = searchType.split("");
+            // BooleanBuilder 생성
+            BooleanBuilder searchBuilder = new BooleanBuilder();         
+            for (String typeword : searchArr) {
 
-        //         switch (typeword) {
-        //             case "t" -> searchBuilder.or(qBoard.title.contains(keyword));
-        //             case "c" -> searchBuilder.or(qBoard.content.contains(keyword));
-        //             case "w" -> searchBuilder.or(qBoard.member.nickname.contains(keyword));
-        //         }
+                switch (typeword) {
+                    case "t" -> searchBuilder.or(qBoard.title.contains(keyword));
+                    case "c" -> searchBuilder.or(qBoard.content.contains(keyword));
+                    case "w" -> searchBuilder.or(qBoard.member.nickname.contains(keyword));
+                }
 
-        //     } // end for
-        //       // for문 끝난후 where 로 searchBuilder 추가
-        //     searchQuery.where(searchBuilder);
-        // }
+            } // end for
+              // for문 끝난후 where 로 searchBuilder 추가
+            searchQuery.where(searchBuilder);
+        }
         
         log.info("--------------------------------------");
         this.getQuerydsl().applyPagination(pageable, searchQuery);
 
 
-        //searchQuery.fetch();
-
-        
-        //return null;
 
         searchQuery.groupBy(qBoard);
         JPQLQuery<BoardListDTO> listQuery = searchQuery.select(Projections.bean(
